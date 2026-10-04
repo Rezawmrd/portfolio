@@ -29,8 +29,6 @@ rel="stylesheet">
     --muted:#858585;
     --gold:#d8b76a;
 
-    --scroll:0;
-    --hero-progress:0;
 }
 
 
@@ -39,13 +37,16 @@ rel="stylesheet">
 ========================================================= */
 
 *{
+
     margin:0;
     padding:0;
+
     box-sizing:border-box;
 }
 
 
 html{
+
     scroll-behavior:smooth;
 }
 
@@ -65,13 +66,10 @@ body{
 
 
 a{
+
     color:inherit;
+
     text-decoration:none;
-}
-
-
-button{
-    font-family:inherit;
 }
 
 
@@ -87,7 +85,7 @@ button{
 
 
 /* =========================================================
-   BACKGROUND GRAIN
+   GRAIN
 ========================================================= */
 
 body::before{
@@ -168,6 +166,7 @@ header.scrolled{
 
 
 .logo span{
+
     color:var(--gold);
 }
 
@@ -185,6 +184,7 @@ header.scrolled{
 
 
 .nav-link:hover{
+
     color:var(--gold);
 }
 
@@ -210,11 +210,8 @@ header.scrolled{
 
 
 /* =========================================================
-   VANTA STATIC BACKGROUND
-   مهم:
-   هیچ animation
-   هیچ scroll transform
-   هیچ mouse transform
+   VANTA
+   کاملاً ثابت
 ========================================================= */
 
 .hero-word{
@@ -255,9 +252,6 @@ header.scrolled{
 
     user-select:none;
 
-    /*
-       کاملاً STATIC
-    */
     animation:none !important;
 
     transition:none !important;
@@ -265,64 +259,7 @@ header.scrolled{
 
 
 /* =========================================================
-   HERO GRID
-========================================================= */
-
-.hero-grid{
-
-    position:absolute;
-
-    inset:-30%;
-
-    z-index:-15;
-
-    background-image:
-
-        linear-gradient(
-            rgba(255,255,255,.032) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(255,255,255,.032) 1px,
-            transparent 1px
-        );
-
-    background-size:70px 70px;
-
-    mask-image:
-        radial-gradient(
-            ellipse at center,
-            black 0%,
-            transparent 72%
-        );
-
-    animation:
-        gridDrift 20s linear infinite;
-
-    opacity:.8;
-}
-
-
-@keyframes gridDrift{
-
-    0%{
-        background-position:0 0;
-    }
-
-    50%{
-        background-position:35px 25px;
-    }
-
-    100%{
-        background-position:70px 70px;
-    }
-}
-
-
-/* =========================================================
-   HERO GLOW
+   AMBIENT LIGHT
 ========================================================= */
 
 .ambient{
@@ -359,14 +296,18 @@ header.scrolled{
 @keyframes ambientPulse{
 
     0%,100%{
+
         opacity:.55;
+
         transform:
             translate(-50%,-50%)
             scale(.9);
     }
 
     50%{
+
         opacity:.9;
+
         transform:
             translate(-50%,-50%)
             scale(1.08);
@@ -446,12 +387,14 @@ header.scrolled{
 @keyframes wireFloat{
 
     0%,100%{
+
         transform:
             translateY(0)
             rotate(-5deg);
     }
 
     50%{
+
         transform:
             translateY(-14px)
             rotate(-3deg);
@@ -462,12 +405,16 @@ header.scrolled{
 @keyframes statusPulse{
 
     0%,100%{
+
         opacity:.35;
+
         transform:scale(.8);
     }
 
     50%{
+
         opacity:1;
+
         transform:scale(1.25);
     }
 }
@@ -529,11 +476,15 @@ header.scrolled{
 @keyframes codeFloatOne{
 
     0%,100%{
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50%{
-        transform:translateY(-13px);
+
+        transform:
+            translateY(-13px);
     }
 }
 
@@ -541,11 +492,15 @@ header.scrolled{
 @keyframes codeFloatTwo{
 
     0%,100%{
-        transform:translate(0,0);
+
+        transform:
+            translate(0,0);
     }
 
     50%{
-        transform:translate(8px,-10px);
+
+        transform:
+            translate(8px,-10px);
     }
 }
 
@@ -553,11 +508,15 @@ header.scrolled{
 @keyframes codeFloatThree{
 
     0%,100%{
-        transform:translateY(0);
+
+        transform:
+            translateY(0);
     }
 
     50%{
-        transform:translateY(11px);
+
+        transform:
+            translateY(11px);
     }
 }
 
@@ -575,10 +534,6 @@ header.scrolled{
     padding-top:35px;
 }
 
-
-/* =========================================================
-   HERO LABEL
-========================================================= */
 
 .hero-label{
 
@@ -628,10 +583,6 @@ header.scrolled{
         forwards;
 }
 
-
-/* =========================================================
-   HERO TITLE
-========================================================= */
 
 .hero-title{
 
@@ -711,6 +662,7 @@ header.scrolled{
 @keyframes lineIn{
 
     to{
+
         transform:
             scaleX(1);
     }
@@ -746,7 +698,7 @@ header.scrolled{
 
 
 /* =========================================================
-   HERO BUTTONS
+   BUTTONS
 ========================================================= */
 
 .hero-actions{
@@ -904,6 +856,7 @@ header.scrolled{
 @keyframes scrollIn{
 
     to{
+
         opacity:1;
     }
 }
@@ -912,10 +865,12 @@ header.scrolled{
 @keyframes scrollLine{
 
     0%{
+
         top:-50%;
     }
 
     100%{
+
         top:100%;
     }
 }
@@ -1044,11 +999,13 @@ header.scrolled{
 
 
 .project:nth-child(2){
+
     transition-delay:.12s;
 }
 
 
 .project:nth-child(3){
+
     transition-delay:.24s;
 }
 
@@ -1276,14 +1233,18 @@ header.scrolled{
 @keyframes ctaGlow{
 
     0%,100%{
+
         opacity:.45;
+
         transform:
             translate(-50%,-50%)
             scale(.9);
     }
 
     50%{
+
         opacity:.9;
+
         transform:
             translate(-50%,-50%)
             scale(1.08);
@@ -1311,6 +1272,7 @@ header.scrolled{
 
 
 .cta h2 span{
+
     color:var(--gold);
 }
 
@@ -1424,9 +1386,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       STATIC VANTA
-    ------------------------------------------------ */
+    /* VANTA ثابت */
 
     .hero-word{
 
@@ -1436,54 +1396,13 @@ footer{
 
         opacity:.52;
 
-        /*
-           همچنان کاملاً ثابت
-        */
-
         animation:none !important;
 
         transition:none !important;
     }
 
 
-    /* -----------------------------------------------
-       GRID
-    ------------------------------------------------ */
-
-    .hero-grid{
-
-        inset:-25%;
-
-        background-size:
-            52px 52px;
-
-        animation:
-            gridDriftMobile 15s
-            linear infinite;
-    }
-
-
-    @keyframes gridDriftMobile{
-
-        0%{
-            background-position:0 0;
-        }
-
-        50%{
-            background-position:
-                26px 18px;
-        }
-
-        100%{
-            background-position:
-                52px 52px;
-        }
-    }
-
-
-    /* -----------------------------------------------
-       LIGHT
-    ------------------------------------------------ */
+    /* نور */
 
     .ambient{
 
@@ -1520,9 +1439,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       WIREFRAME
-    ------------------------------------------------ */
+    /* Wireframe */
 
     .wireframe{
 
@@ -1560,9 +1477,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       CODE
-    ------------------------------------------------ */
+    /* Code */
 
     .code{
 
@@ -1596,9 +1511,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       HERO
-    ------------------------------------------------ */
+    /* Hero */
 
     .hero{
 
@@ -1684,9 +1597,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       SCROLL INDICATOR
-    ------------------------------------------------ */
+    /* Scroll */
 
     .scroll-indicator{
 
@@ -1702,9 +1613,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       PROJECTS
-    ------------------------------------------------ */
+    /* Projects */
 
     .projects{
 
@@ -1739,8 +1648,6 @@ footer{
 
 
     .project-grid{
-
-        display:grid;
 
         grid-template-columns:1fr;
 
@@ -1780,9 +1687,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       SERVICES
-    ------------------------------------------------ */
+    /* Services */
 
     .services{
 
@@ -1820,9 +1725,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       CTA
-    ------------------------------------------------ */
+    /* CTA */
 
     .cta{
 
@@ -1872,9 +1775,7 @@ footer{
     }
 
 
-    /* -----------------------------------------------
-       FOOTER
-    ------------------------------------------------ */
+    /* Footer */
 
     footer{
 
@@ -1952,9 +1853,9 @@ footer{
 
         animation-iteration-count:1 !important;
 
-        scroll-behavior:auto !important;
-
         transition-duration:.01ms !important;
+
+        scroll-behavior:auto !important;
     }
 
 }
@@ -1976,7 +1877,9 @@ footer{
     <div class="container nav">
 
         <div class="logo">
+
             VAN<span>TA</span>
+
         </div>
 
 
@@ -1984,7 +1887,9 @@ footer{
             href="#projects"
             class="nav-link"
         >
+
             PROJECTS
+
         </a>
 
     </div>
@@ -2001,8 +1906,8 @@ footer{
 
 
     <!--
-        این VANTA عمداً هیچ Motion ندارد.
-        کاملاً جدا از تمام انیمیشن‌هاست.
+        VANTA کاملاً ثابت است.
+        هیچ Motion روی آن اعمال نمی‌شود.
     -->
 
     <div class="hero-word">
@@ -2010,9 +1915,7 @@ footer{
     </div>
 
 
-    <!-- Animated background -->
-
-    <div class="hero-grid"></div>
+    <!-- فقط Motionهای اصلی -->
 
     <div class="ambient"></div>
 
@@ -2034,8 +1937,6 @@ footer{
     </div>
 
 
-
-    <!-- Hero content -->
 
     <div class="container hero-content">
 
@@ -2073,7 +1974,9 @@ footer{
                 href="#projects"
                 class="btn btn-primary"
             >
+
                 مشاهده پروژه‌ها
+
             </a>
 
 
@@ -2081,17 +1984,18 @@ footer{
                 href="#contact"
                 class="btn btn-secondary"
             >
+
                 شروع همکاری
+
             </a>
 
 
         </div>
 
+
     </div>
 
 
-
-    <!-- Scroll -->
 
     <div class="scroll-indicator">
 
@@ -2100,6 +2004,7 @@ footer{
         <div class="scroll-line"></div>
 
     </div>
+
 
 </section>
 
@@ -2113,6 +2018,7 @@ footer{
     class="projects"
     id="projects"
 >
+
 
     <div class="container">
 
@@ -2135,7 +2041,9 @@ footer{
 
 
             <p class="section-description">
+
                 بخشی از پروژه‌هایی که طراحی و توسعه داده‌ام
+
             </p>
 
 
@@ -2178,7 +2086,9 @@ footer{
 
                     مشاهده پروژه
 
-                    <span>←</span>
+                    <span>
+                        ←
+                    </span>
 
                 </div>
 
@@ -2218,7 +2128,9 @@ footer{
 
                     مشاهده پروژه
 
-                    <span>←</span>
+                    <span>
+                        ←
+                    </span>
 
                 </div>
 
@@ -2258,7 +2170,9 @@ footer{
 
                     مشاهده پروژه
 
-                    <span>←</span>
+                    <span>
+                        ←
+                    </span>
 
                 </div>
 
@@ -2285,6 +2199,7 @@ footer{
 
         <div class="section-head">
 
+
             <div>
 
                 <div class="eyebrow">
@@ -2297,6 +2212,7 @@ footer{
                 </h2>
 
             </div>
+
 
         </div>
 
@@ -2437,7 +2353,9 @@ footer{
 
 
         <p>
+
             اگر ایده‌ای برای سایتت داری، با من در میان بگذار.
+
         </p>
 
 
@@ -2446,7 +2364,9 @@ footer{
             href="https://instagram.com/rezawmrd"
             target="_blank"
         >
+
             شروع یک پروژه
+
         </a>
 
 
@@ -2462,7 +2382,9 @@ footer{
 
 <footer>
 
+
     <div class="container footer-inner">
+
 
         <span>
             VANTA
@@ -2472,6 +2394,7 @@ footer{
         <span>
             WEB DESIGN & DEVELOPMENT
         </span>
+
 
     </div>
 
@@ -2516,12 +2439,12 @@ updateHeader();
 
 
 /* =========================================================
-   MOBILE SCROLL MOTION
+   PROJECT REVEAL
 ========================================================= */
 
 const revealItems =
     document.querySelectorAll(
-        ".project,.service,.section-head,.cta h2,.cta p,.cta-button"
+        ".project"
     );
 
 
@@ -2549,10 +2472,12 @@ const revealObserver =
         },
 
         {
+
             threshold:.14,
 
             rootMargin:
                 "0px 0px -45px 0px"
+
         }
 
     );
@@ -2567,92 +2492,6 @@ revealItems.forEach(
 
     }
 );
-
-
-
-/* =========================================================
-   MOBILE HERO DEPTH
-   فقط برای عناصر Motion
-   VANTA به هیچ عنوان دستکاری نمی‌شود.
-========================================================= */
-
-const hero =
-    document.querySelector(".hero");
-
-const grid =
-    document.querySelector(".hero-grid");
-
-const wireframe =
-    document.querySelector(".wireframe");
-
-const codes =
-    document.querySelectorAll(".code");
-
-
-
-function mobileScrollMotion(){
-
-    if(window.innerWidth > 800){
-
-        return;
-    }
-
-
-    const rect =
-        hero.getBoundingClientRect();
-
-
-    const progress =
-        Math.max(
-            0,
-            Math.min(
-                1,
-                -rect.top /
-                (window.innerHeight * .85)
-            )
-        );
-
-
-    /*
-       فقط Motion elements
-    */
-
-    grid.style.transform =
-        `translateY(${progress * 35}px)`;
-
-
-    wireframe.style.transform =
-        `translateY(${progress * -22}px) rotate(-5deg)`;
-
-
-    codes.forEach(
-        (code,index) => {
-
-            const amount =
-                index === 0
-                ? -20
-                : index === 1
-                ? 15
-                : -12;
-
-
-            code.style.transform =
-                `translateY(${progress * amount}px)`;
-
-        }
-    );
-
-}
-
-
-window.addEventListener(
-    "scroll",
-    mobileScrollMotion,
-    {passive:true}
-);
-
-
-mobileScrollMotion();
 
 
 
@@ -2672,9 +2511,8 @@ document
                 "touchstart",
                 () => {
 
-                    element.classList.add(
-                        "touching"
-                    );
+                    element.style.transform =
+                        "scale(.985)";
 
                 },
                 {passive:true}
@@ -2685,17 +2523,16 @@ document
                 "touchend",
                 () => {
 
-                    element.classList.remove(
-                        "touching"
-                    );
+                    element.style.transform =
+                        "";
 
                 },
                 {passive:true}
             );
 
+
         }
     );
-
 
 </script>
 
