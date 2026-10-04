@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>REZA WM — Web Design & Development</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --bg:#080808;
+    --bg2:#101010;
+    --text:#f4f1eb;
+    --muted:#8d8a84;
+    --line:rgba(255,255,255,.10);
+    --accent:#d9b889;
+    --accent2:#f0d6ad;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"Vazirmatn",sans-serif;
+    overflow-x:hidden;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* =========================
+   CURSOR GLOW
+========================= */
+
+.cursor{
+    position:fixed;
+    width:280px;
+    height:280px;
+    border-radius:50%;
+    background:radial-gradient(
+        circle,
+        rgba(217,184,137,.09),
+        transparent 65%
+    );
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:0;
+}
+
+/* =========================
+   INTRO
+========================= */
+
+.intro{
+    position:fixed;
+    inset:0;
+    background:#080808;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:opacity 1s ease,visibility 1s ease;
+}
+
+.intro.hide{
+    opacity:0;
+    visibility:hidden;
+}
+
+.intro-text{
+    overflow:hidden;
+    text-align:center;
+}
+
+.intro-text span{
+    display:block;
+    font-size:13px;
+    letter-spacing:5px;
+    color:#aaa;
+    margin-bottom:15px;
+}
+
+.intro-text strong{
+    display:block;
+    font-size:38px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    height:76px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 22px;
+    z-index:100;
+    mix-blend-mode:normal;
+}
+
+.logo{
+    font-size:17px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.menu{
+    width:45px;
+    height:45px;
+    border:1px solid var(--line);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(10,10,10,.55);
+    backdrop-filter:blur(15px);
+}
+
+.menu span{
+    width:17px;
+    height:1px;
+    background:#fff;
+    position:relative;
+}
+
+.menu span:after{
+    content:"";
+    position:absolute;
+    left:0;
+    top:6px;
+    width:12px;
+    height:1px;
+    background:#fff;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100svh;
+    padding:130px 22px 50px;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.hero-noise{
+    position:absolute;
+    inset:0;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    pointer-events:none;
+}
+
+.hero-orb{
+    position:absolute;
+    width:430px;
+    height:430px;
+    border-radius:50%;
+    right:-220px;
+    top:100px;
+    background:radial-gradient(
+        circle,
+        rgba(217,184,137,.20),
+        rgba(217,184,137,.04) 35%,
+        transparent 70%
+    );
+    filter:blur(20px);
+}
+
+.eyebrow{
+    color:var(--accent);
+    font-size:11px;
+    letter-spacing:3px;
+    margin-bottom:25px;
+    animation:fadeUp 1s .4s both;
+}
+
+.hero h1{
+    font-size:clamp(58px,17vw,110px);
+    line-height:.92;
+    font-weight:900;
+    letter-spacing:-4px;
+    max-width:850px;
+    position:relative;
+    z-index:2;
+    animation:fadeUp 1s .6s both;
+}
+
+.hero h1 .outline{
+    color:transparent;
+    -webkit-text-stroke:1px rgba(255,255,255,.65);
+}
+
+.hero h1 .gold{
+    color:var(--accent2);
+}
+
+.hero-desc{
+    max-width:470px;
+    margin-top:30px;
+    color:#aaa;
+    font-size:14px;
+    line-height:2;
+    animation:fadeUp 1s .8s both;
+}
+
+.hero-actions{
+    display:flex;
+    gap:10px;
+    margin-top:30px;
+    animation:fadeUp 1s 1s both;
+}
+
+.btn{
+    min-height:48px;
+    padding:0 20px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:13px;
+    transition:.3s;
+}
+
+.btn.primary{
+    background:var(--text);
+    color:#111;
+    border-color:var(--text);
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+}
+
+.scroll{
+    position:absolute;
+    bottom:25px;
+    right:22px;
+    color:#666;
+    font-size:10px;
+    letter-spacing:2px;
+    writing-mode:vertical-rl;
+}
+
+/* =========================
+   MARQUEE
+========================= */
+
+.marquee{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+    padding:18px 0;
+    white-space:nowrap;
+}
+
+.marquee-track{
+    display:inline-flex;
+    gap:35px;
+    animation:marquee 18s linear infinite;
+}
+
+.marquee span{
+    font-size:13px;
+    color:#777;
+}
+
+.marquee .dot{
+    color:var(--accent);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    position:relative;
+    z-index:2;
+}
+
+.section{
+    padding:100px 22px;
+}
+
+.section-label{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    color:var(--accent);
+    font-size:11px;
+    letter-spacing:2px;
+    margin-bottom:25px;
+}
+
+.section-label:before{
+    content:"";
+    width:28px;
+    height:1px;
+    background:var(--accent);
+}
+
+.section-title{
+    font-size:clamp(35px,10vw,70px);
+    line-height:1.1;
+    font-weight:800;
+    letter-spacing:-2px;
+    max-width:700px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    margin-top:50px;
+}
+
+.project{
+    position:relative;
+    min-height:430px;
+    border:1px solid var(--line);
+    border-radius:28px;
+    overflow:hidden;
+    background:#111;
+    isolation:isolate;
+    transition:.5s;
+}
+
+.project:hover{
+    transform:translateY(-7px);
+    border-color:rgba(217,184,137,.35);
+}
+
+.project-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2;
+}
+
+.project-bg.hayat{
+    background:
+    radial-gradient(circle at 70% 30%,rgba(218,175,76,.35),transparent 35%),
+    linear-gradient(135deg,#16130d,#080808);
+}
+
+.project-bg.hobab{
+    background:
+    radial-gradient(circle at 70% 25%,rgba(190,125,135,.4),transparent 35%),
+    linear-gradient(135deg,#211617,#0b0909);
+}
+
+.project-bg.esi{
+    background:
+    radial-gradient(circle at 75% 30%,rgba(80,80,80,.4),transparent 35%),
+    linear-gradient(135deg,#171717,#070707);
+}
+
+.project-content{
+    min-height:430px;
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.project-number{
+    font-size:11px;
+    color:#888;
+}
+
+.project-name{
+    font-size:48px;
+    font-weight:900;
+    letter-spacing:-2px;
+}
+
+.project-type{
+    color:#aaa;
+    font-size:13px;
+}
+
+.project-link{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size:12px;
+    margin-top:18px;
+}
+
+.project-link i{
+    width:36px;
+    height:36px;
+    border:1px solid rgba(255,255,255,.2);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-style:normal;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services{
+    margin-top:50px;
+    border-top:1px solid var(--line);
+}
+
+.service{
+    min-height:85px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    transition:.3s;
+}
+
+.service:hover{
+    padding-right:12px;
+}
+
+.service-number{
+    font-size:11px;
+    color:#666;
+}
+
+.service-name{
+    flex:1;
+    font-size:17px;
+    font-weight:600;
+}
+
+.service-arrow{
+    color:var(--accent);
+    font-size:20px;
+}
+
+/* =========================
+   WHY
+========================= */
+
+.why{
+    background:#f1ede6;
+    color:#111;
+    border-radius:35px;
+    padding:70px 22px;
+    margin:0 10px;
+}
+
+.why .section-label{
+    color:#9a7443;
+}
+
+.why .section-label:before{
+    background:#9a7443;
+}
+
+.why-text{
+    font-size:17px;
+    line-height:2;
+    margin-top:35px;
+    max-width:650px;
+}
+
+.points{
+    margin-top:45px;
+    display:grid;
+    gap:12px;
+}
+
+.point{
+    border:1px solid rgba(0,0,0,.12);
+    border-radius:20px;
+    padding:20px;
+}
+
+.point strong{
+    display:block;
+    font-size:16px;
+    margin-bottom:8px;
+}
+
+.point span{
+    color:#666;
+    font-size:12px;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    padding:130px 22px 90px;
+    text-align:center;
+    overflow:hidden;
+}
+
+.cta-small{
+    color:var(--accent);
+    font-size:11px;
+    letter-spacing:3px;
+}
+
+.cta h2{
+    margin-top:25px;
+    font-size:clamp(45px,13vw,90px);
+    line-height:.95;
+    letter-spacing:-4px;
+    font-weight:900;
+}
+
+.cta h2 span{
+    color:var(--accent2);
+}
+
+.cta p{
+    color:#888;
+    max-width:420px;
+    margin:28px auto;
+    line-height:2;
+    font-size:13px;
+}
+
+.cta .btn{
+    display:inline-flex;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:25px 22px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:#666;
+    font-size:10px;
+}
+
+.footer-logo{
+    color:#ddd;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes marquee{
+    from{
+        transform:translateX(0);
+    }
+    to{
+        transform:translateX(-50%);
+    }
+}
+
+/* =========================
+   DESKTOP
+========================= */
+
+@media(min-width:800px){
+
+    header{
+        padding:0 50px;
+    }
+
+    .hero{
+        padding:160px 8vw 70px;
+    }
+
+    .hero-desc{
+        font-size:15px;
+    }
+
+    .section{
+        padding:150px 8vw;
+    }
+
+    .projects{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .project:first-child{
+        grid-column:span 2;
+        min-height:600px;
+    }
+
+    .project:first-child .project-content{
+        min-height:600px;
+    }
+
+    .why{
+        margin:0 5vw;
+        padding:100px 8vw;
+    }
+
+    .points{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .cta{
+        padding:180px 8vw 120px;
+    }
+
+    footer{
+        padding:30px 8vw;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="cursor" id="cursor"></div>
+
+<!-- INTRO -->
+
+<div class="intro" id="intro">
+    <div class="intro-text">
+        <span>WEB DESIGN & DEVELOPMENT</span>
+        <strong>REZA WM</strong>
+    </div>
+</div>
+
+<!-- HEADER -->
+
+<header>
+
+    <a href="#" class="logo">
+        REZA WM
+    </a>
+
+    <div class="menu">
+        <span></span>
+    </div>
+
+</header>
+
+
+<!-- HERO -->
+
+<main>
+
+<section class="hero">
+
+    <div class="hero-noise"></div>
+    <div class="hero-orb"></div>
+
+    <div class="eyebrow">
+        WEB DESIGN & DEVELOPMENT
+    </div>
+
+    <h1>
+        من فقط سایت
+        <br>
+        <span class="outline">نمی‌سازم.</span>
+        <br>
+        <span class="gold">تجربه می‌سازم.</span>
+    </h1>
+
+    <p class="hero-desc">
+        طراحی و توسعه وب‌سایت‌های مدرن برای کسب‌وکارهایی
+        که می‌خواهند متفاوت دیده شوند.
+    </p>
+
+    <div class="hero-actions">
+
+        <a href="#projects" class="btn primary">
+            دیدن نمونه‌کارها
+        </a>
+
+        <a href="#contact" class="btn">
+            شروع پروژه
+        </a>
+
+    </div>
+
+    <div class="scroll">
+        SCROLL ↓
+    </div>
+
+</section>
+
+
+<!-- MARQUEE -->
+
+<div class="marquee">
+
+    <div class="marquee-track">
+
+        <span>WEB DESIGN</span>
+        <span class="dot">✦</span>
+
+        <span>DEVELOPMENT</span>
+        <span class="dot">✦</span>
+
+        <span>UI / UX</span>
+        <span class="dot">✦</span>
+
+        <span>DIGITAL EXPERIENCES</span>
+        <span class="dot">✦</span>
+
+        <span>WEB DESIGN</span>
+        <span class="dot">✦</span>
+
+        <span>DEVELOPMENT</span>
+        <span class="dot">✦</span>
+
+    </div>
+
+</div>
+
+
+<!-- PROJECTS -->
+
+<section class="section" id="projects">
+
+    <div class="section-label">
+        01 / PROJECTS
+    </div>
+
+    <h2 class="section-title">
+        چیزهایی که
+        <br>
+        ساخته‌ام.
+    </h2>
+
+
+    <div class="projects">
+
+
+        <article class="project">
+
+            <div class="project-bg hayat"></div>
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    01 — DIGITAL MENU
+                </div>
+
+                <div>
+
+                    <div class="project-name">
+                        HAYAT
+                    </div>
+
+                    <div class="project-type">
+                        منوی دیجیتال + ثبت سفارش
+                    </div>
+
+                    <a
+                    href="https://rezawmrd.github.io/hayat-menu/"
+                    target="_blank"
+                    class="project-link">
+
+                        مشاهده پروژه
+
+                        <i>↗</i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-bg hobab"></div>
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    02 — BOOKING
+                </div>
+
+                <div>
+
+                    <div class="project-name">
+                        HOBAB
+                    </div>
+
+                    <div class="project-type">
+                        رزرو آنلاین سالن زیبایی
+                    </div>
+
+                    <a
+                    href="https://rezawmrd.github.io/Hobab_beauty/"
+                    target="_blank"
+                    class="project-link">
+
+                        مشاهده پروژه
+
+                        <i>↗</i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="project">
+
+            <div class="project-bg esi"></div>
+
+            <div class="project-content">
+
+                <div class="project-number">
+                    03 — APPOINTMENT
+                </div>
+
+                <div>
+
+                    <div class="project-name">
+                        ESI BARBER
+                    </div>
+
+                    <div class="project-type">
+                        سیستم نوبت‌دهی آنلاین
+                    </div>
+
+                    <a
+                    href="https://rezawmrd.github.io/Esi_barber/"
+                    target="_blank"
+                    class="project-link">
+
+                        مشاهده پروژه
+
+                        <i>↗</i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="section">
+
+    <div class="section-label">
+        02 / SERVICES
+    </div>
+
+    <h2 class="section-title">
+        چی می‌سازم؟
+    </h2>
+
+
+    <div class="services">
+
+        <div class="service">
+            <span class="service-number">01</span>
+            <span class="service-name">سایت اختصاصی کسب‌وکار</span>
+            <span class="service-arrow">↗</span>
+        </div>
+
+        <div class="service">
+            <span class="service-number">02</span>
+            <span class="service-name">رزرو آنلاین</span>
+            <span class="service-arrow">↗</span>
+        </div>
+
+        <div class="service">
+            <span class="service-number">03</span>
+            <span class="service-name">منوی دیجیتال و ثبت سفارش</span>
+            <span class="service-arrow">↗</span>
+        </div>
+
+        <div class="service">
+            <span class="service-number">04</span>
+            <span class="service-name">فروشگاه اینترنتی</span>
+            <span class="service-arrow">↗</span>
+        </div>
+
+        <div class="service">
+            <span class="service-number">05</span>
+            <span class="service-name">کاتالوگ و معرفی محصولات</span>
+            <span class="service-arrow">↗</span>
+        </div>
+
+        <div class="service">
+            <span class="service-number">06</span>
+            <span class="service-name">پنل مدیریت اختصاصی</span>
+            <span class="service-arrow">↗</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- WHY -->
+
+<section class="why">
+
+    <div class="section-label">
+        03 / WHY ME
+    </div>
+
+    <h2 class="section-title">
+        سایت فقط
+        <br>
+        یک صفحه نیست.
+    </h2>
+
+    <p class="why-text">
+        هدف من ساختن سایتی نیست که فقط «قشنگ» باشد.
+        سایت باید سریع، کاربردی، حرفه‌ای و متناسب با
+        کسب‌وکار شما باشد؛ چیزی که واقعاً بتواند برایتان
+        مشتری و اعتبار ایجاد کند.
+    </p>
+
+
+    <div class="points">
+
+        <div class="point">
+
+            <strong>
+                طراحی اختصاصی
+            </strong>
+
+            <span>
+                بدون قالب‌های تکراری و ظاهرهای آماده.
+            </span>
+
+        </div>
+
+
+        <div class="point">
+
+            <strong>
+                Mobile First
+            </strong>
+
+            <span>
+                چون بیشتر مشتری‌ها از موبایل وارد سایت می‌شوند.
+            </span>
+
+        </div>
+
+
+        <div class="point">
+
+            <strong>
+                سرعت و عملکرد
+            </strong>
+
+            <span>
+                ظاهر زیبا بدون قربانی کردن عملکرد.
+            </span>
+
+        </div>
+
+
+        <div class="point">
+
+            <strong>
+                مدیریت ساده
+            </strong>
+
+            <span>
+                بخش‌های لازم برای مدیریت کسب‌وکار شما.
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="cta" id="contact">
+
+    <div class="cta-small">
+        LET'S BUILD SOMETHING
+    </div>
+
+    <h2>
+        آماده‌ای
+        <br>
+        <span>متفاوت دیده بشی؟</span>
+    </h2>
+
+    <p>
+        اگر برای کسب‌وکارت سایت می‌خواهی،
+        درباره ایده‌ات با من صحبت کن.
+    </p>
+
+    <a
+    href="https://instagram.com/rezawmrd"
+    target="_blank"
+    class="btn primary">
+
+        شروع یک پروژه
+
+    </a>
+
+</section>
+
+
+</main>
+
+
+<footer>
+
+    <div class="footer-logo">
+        REZA WM
+    </div>
+
+    <div>
+        Web Design & Development
+    </div>
+
+</footer>
+
+
+<script>
+
+/* INTRO */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document
+        .getElementById("intro")
+        .classList.add("hide");
+
+    },1500);
+
+});
+
+
+/* CURSOR */
+
+const cursor =
+document.getElementById("cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+    cursor.style.left =
+    e.clientX + "px";
+
+    cursor.style.top =
+    e.clientY + "px";
+
+});
+
+
+/* SIMPLE REVEAL */
+
+const elements =
+document.querySelectorAll(
+    ".project,.service,.point"
+);
+
+const observer =
+new IntersectionObserver(
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.style.opacity="1";
+            entry.target.style.transform="translateY(0)";
+
+        }
+
+    });
+
+},
+{
+    threshold:.1
+});
+
+
+elements.forEach(el=>{
+
+    el.style.opacity="0";
+    el.style.transform="translateY(35px)";
+    el.style.transition="opacity .8s ease, transform .8s ease";
+
+    observer.observe(el);
+
+});
+
+</script>
+
+</body>
+</html>
