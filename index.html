@@ -12,10 +12,6 @@
 
 <style>
 
-/* =========================
-   RESET
-========================= */
-
 *{
     margin:0;
     padding:0;
@@ -38,24 +34,12 @@ a{
     text-decoration:none;
 }
 
-
-/* =========================
-   VARIABLES
-========================= */
-
 :root{
     --gold:#d8b76a;
     --gold-light:#f0d99a;
-    --dark:#080808;
-    --card:#111;
-    --border:#242424;
     --muted:#858585;
+    --border:#242424;
 }
-
-
-/* =========================
-   CONTAINER
-========================= */
 
 .container{
     width:min(1120px,90%);
@@ -73,9 +57,10 @@ header{
     left:0;
     width:100%;
     z-index:1000;
+
     padding:20px 0;
 
-    background:rgba(8,8,8,.65);
+    background:rgba(8,8,8,.68);
     backdrop-filter:blur(18px);
 
     border-bottom:1px solid rgba(255,255,255,.05);
@@ -83,8 +68,8 @@ header{
 
 .nav{
     display:flex;
-    justify-content:space-between;
     align-items:center;
+    justify-content:space-between;
 }
 
 .logo{
@@ -98,8 +83,8 @@ header{
 }
 
 .nav-btn{
-    font-size:13px;
     color:#aaa;
+    font-size:13px;
     transition:.3s;
 }
 
@@ -120,65 +105,298 @@ header{
 
     position:relative;
     overflow:hidden;
+
+    isolation:isolate;
 }
 
 
-/* ambient light */
+/* نرم‌افزار نوری */
 
 .hero::before{
     content:"";
 
     position:absolute;
 
-    width:500px;
-    height:500px;
+    width:480px;
+    height:480px;
 
     background:var(--gold);
 
-    opacity:.07;
+    opacity:.055;
 
-    filter:blur(130px);
+    filter:blur(140px);
 
     border-radius:50%;
 
-    top:10%;
-    left:40%;
-}
-
-
-/* huge background word */
-
-.hero-word{
-    position:absolute;
-
-    font-size:clamp(120px,22vw,300px);
-
-    font-weight:900;
-
-    color:transparent;
-
-    -webkit-text-stroke:1px rgba(255,255,255,.035);
-
-    white-space:nowrap;
-
-    left:50%;
-    top:50%;
+    left:45%;
+    top:25%;
 
     transform:translate(-50%,-50%);
 
     pointer-events:none;
 
-    user-select:none;
+    z-index:-3;
 }
 
+
+/* =========================
+   GRID
+========================= */
+
+.hero-grid{
+    position:absolute;
+    inset:0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.035) 1px,
+            transparent 1px
+        );
+
+    background-size:70px 70px;
+
+    mask-image:
+        radial-gradient(
+            ellipse at center,
+            black 0%,
+            transparent 72%
+        );
+
+    opacity:.55;
+
+    transform:translate3d(
+        calc(var(--mx,0px) * .12),
+        calc(var(--my,0px) * .12),
+        0
+    );
+
+    transition:transform .5s ease-out;
+
+    z-index:-4;
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   HUGE BACKGROUND WORD
+========================= */
+
+.hero-word{
+    position:absolute;
+
+    left:50%;
+    top:52%;
+
+    transform:
+        translate(-50%,-50%)
+        translate3d(
+            calc(var(--mx,0px) * -.03),
+            calc(var(--my,0px) * -.03),
+            0
+        );
+
+    font-size:clamp(130px,22vw,310px);
+
+    font-weight:900;
+
+    letter-spacing:-12px;
+
+    white-space:nowrap;
+
+    color:transparent;
+
+    -webkit-text-stroke:
+        1px rgba(255,255,255,.035);
+
+    user-select:none;
+    pointer-events:none;
+
+    z-index:-3;
+
+    transition:transform .8s ease-out;
+}
+
+
+/* =========================
+   UI WIREFRAME
+========================= */
+
+.wireframe{
+    position:absolute;
+
+    width:260px;
+    height:170px;
+
+    left:68%;
+    top:55%;
+
+    border:1px solid rgba(216,183,106,.14);
+
+    transform:
+        translate3d(
+            calc(var(--mx,0px) * .25),
+            calc(var(--my,0px) * .25),
+            0
+        )
+        rotate(-7deg);
+
+    opacity:.65;
+
+    transition:transform .7s cubic-bezier(.2,.7,.2,1);
+
+    pointer-events:none;
+
+    z-index:-1;
+}
+
+.wireframe::before{
+    content:"";
+
+    position:absolute;
+
+    left:0;
+    right:0;
+    top:22px;
+
+    height:1px;
+
+    background:rgba(216,183,106,.12);
+}
+
+.wireframe::after{
+    content:"";
+
+    position:absolute;
+
+    width:55%;
+    height:8px;
+
+    right:20px;
+    top:55px;
+
+    border-top:1px solid rgba(255,255,255,.09);
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    box-shadow:
+        0 30px 0 rgba(255,255,255,.05),
+        0 60px 0 rgba(255,255,255,.035);
+}
+
+
+/* =========================
+   CODE ELEMENTS
+========================= */
+
+.code{
+    position:absolute;
+
+    color:rgba(216,183,106,.16);
+
+    font-family:monospace;
+
+    font-size:15px;
+
+    pointer-events:none;
+
+    user-select:none;
+
+    z-index:-1;
+
+    transition:
+        transform .8s ease-out;
+}
+
+.code-one{
+    left:10%;
+    top:30%;
+
+    transform:
+        translate3d(
+            calc(var(--mx,0px) * -.18),
+            calc(var(--my,0px) * -.18),
+            0
+        )
+        rotate(-8deg);
+}
+
+.code-two{
+    right:13%;
+    top:22%;
+
+    transform:
+        translate3d(
+            calc(var(--mx,0px) * .15),
+            calc(var(--my,0px) * .15),
+            0
+        )
+        rotate(7deg);
+}
+
+.code-three{
+    right:18%;
+    bottom:18%;
+
+    transform:
+        translate3d(
+            calc(var(--mx,0px) * -.1),
+            calc(var(--my,0px) * -.1),
+            0
+        );
+}
+
+
+/* =========================
+   FLOATING DOT
+========================= */
+
+.dot{
+    position:absolute;
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:var(--gold);
+
+    box-shadow:
+        0 0 25px rgba(216,183,106,.6);
+
+    left:73%;
+    top:52%;
+
+    transform:
+        translate3d(
+            calc(var(--mx,0px) * .35),
+            calc(var(--my,0px) * .35),
+            0
+        );
+
+    transition:transform .5s ease-out;
+
+    z-index:0;
+}
+
+
+/* =========================
+   HERO CONTENT
+========================= */
 
 .hero-content{
     position:relative;
-    z-index:2;
+
+    z-index:5;
 
     padding-top:80px;
-}
 
+    max-width:950px;
+}
 
 .eyebrow{
     display:flex;
@@ -203,7 +421,6 @@ header{
     background:var(--gold);
 }
 
-
 .hero h1{
     font-size:clamp(48px,9vw,105px);
 
@@ -212,20 +429,18 @@ header{
     font-weight:900;
 
     letter-spacing:-3px;
-
-    max-width:950px;
 }
 
 .hero h1 span{
     display:block;
+
     color:var(--gold);
 }
-
 
 .hero-description{
     margin-top:28px;
 
-    max-width:560px;
+    max-width:550px;
 
     color:#999;
 
@@ -233,7 +448,6 @@ header{
 
     line-height:2;
 }
-
 
 .hero-actions{
     display:flex;
@@ -245,8 +459,12 @@ header{
     flex-wrap:wrap;
 }
 
-
 .btn{
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
     padding:14px 24px;
 
     border-radius:7px;
@@ -257,7 +475,6 @@ header{
 
     transition:.3s;
 }
-
 
 .btn-primary{
     background:var(--gold);
@@ -270,7 +487,6 @@ header{
 
     background:var(--gold-light);
 }
-
 
 .btn-secondary{
     border:1px solid #333;
@@ -286,55 +502,6 @@ header{
 
 
 /* =========================
-   FLOATING CIRCLE
-========================= */
-
-.orbit{
-    position:absolute;
-
-    width:230px;
-    height:230px;
-
-    border:1px solid rgba(216,183,106,.25);
-
-    border-radius:50%;
-
-    left:72%;
-    top:57%;
-
-    animation:rotate 16s linear infinite;
-}
-
-.orbit::before{
-    content:"";
-
-    position:absolute;
-
-    width:8px;
-    height:8px;
-
-    background:var(--gold);
-
-    border-radius:50%;
-
-    top:-4px;
-    left:50%;
-
-    box-shadow:0 0 25px var(--gold);
-}
-
-@keyframes rotate{
-    from{
-        transform:rotate(0deg);
-    }
-
-    to{
-        transform:rotate(360deg);
-    }
-}
-
-
-/* =========================
    SECTIONS
 ========================= */
 
@@ -342,30 +509,23 @@ section{
     padding:100px 0;
 }
 
-
 .section-head{
     display:flex;
 
     justify-content:space-between;
-
     align-items:end;
 
     margin-bottom:40px;
 }
 
-
 .section-title{
     font-size:36px;
-
     font-weight:900;
 }
 
-
 .section-label{
     color:#555;
-
     font-size:12px;
-
     letter-spacing:2px;
 }
 
@@ -382,7 +542,6 @@ section{
 
     gap:15px;
 }
-
 
 .project{
     position:relative;
@@ -405,14 +564,11 @@ section{
     overflow:hidden;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:space-between;
 
     transition:.45s;
 }
-
 
 .project::after{
     content:"";
@@ -434,25 +590,20 @@ section{
     transition:.5s;
 }
 
-
 .project:hover{
     transform:translateY(-8px);
 
     border-color:#4b402c;
 }
 
-
 .project:hover::after{
     opacity:.12;
 }
 
-
 .project-number{
     color:#555;
-
     font-size:12px;
 }
-
 
 .project-name{
     font-size:34px;
@@ -462,7 +613,6 @@ section{
     letter-spacing:-1px;
 }
 
-
 .project-desc{
     color:#777;
 
@@ -471,22 +621,18 @@ section{
     margin-top:5px;
 }
 
-
 .project-bottom{
     display:flex;
 
     justify-content:space-between;
-
     align-items:center;
 }
-
 
 .project-link{
     color:var(--gold);
 
     font-size:12px;
 }
-
 
 .project-arrow{
     width:35px;
@@ -497,14 +643,11 @@ section{
     border-radius:50%;
 
     display:flex;
-
     align-items:center;
-
     justify-content:center;
 
     transition:.3s;
 }
-
 
 .project:hover .project-arrow{
     background:var(--gold);
@@ -525,7 +668,6 @@ section{
     border-top:1px solid #222;
 }
 
-
 .service{
     display:flex;
 
@@ -540,13 +682,11 @@ section{
     transition:.3s;
 }
 
-
 .service:hover{
     padding-right:15px;
 
     color:var(--gold);
 }
-
 
 .service-number{
     color:#555;
@@ -556,7 +696,6 @@ section{
     width:40px;
 }
 
-
 .service-name{
     flex:1;
 
@@ -564,7 +703,6 @@ section{
 
     font-weight:600;
 }
-
 
 .service-arrow{
     color:#555;
@@ -589,7 +727,6 @@ section{
     border-top:1px solid #171717;
 }
 
-
 .cta::before{
     content:"";
 
@@ -600,7 +737,7 @@ section{
 
     background:var(--gold);
 
-    opacity:.05;
+    opacity:.045;
 
     filter:blur(120px);
 
@@ -610,12 +747,10 @@ section{
     transform:translate(-50%,-50%);
 }
 
-
 .cta-content{
     position:relative;
     z-index:2;
 }
-
 
 .cta h2{
     font-size:clamp(42px,8vw,85px);
@@ -627,11 +762,9 @@ section{
     letter-spacing:-3px;
 }
 
-
 .cta h2 span{
     color:var(--gold);
 }
-
 
 .cta p{
     margin:22px auto 30px;
@@ -690,21 +823,17 @@ footer{
         width:88%;
     }
 
-
     header{
         padding:16px 0;
     }
-
 
     .hero{
         min-height:100vh;
     }
 
-
     .hero-content{
         padding-top:70px;
     }
-
 
     .hero h1{
         font-size:52px;
@@ -712,81 +841,112 @@ footer{
         letter-spacing:-2px;
     }
 
-
     .hero-description{
         font-size:14px;
 
         max-width:330px;
     }
 
-
     .hero-word{
-        font-size:120px;
+        font-size:115px;
 
-        top:35%;
+        top:36%;
+
+        letter-spacing:-7px;
     }
 
+    .hero-grid{
+        background-size:45px 45px;
 
-    .orbit{
-        width:150px;
-        height:150px;
-
-        left:65%;
-        top:70%;
-
-        opacity:.6;
+        opacity:.35;
     }
 
+    .wireframe{
+        width:180px;
+        height:120px;
+
+        left:47%;
+        top:68%;
+
+        opacity:.4;
+    }
+
+    .code{
+        font-size:11px;
+
+        opacity:.45;
+    }
+
+    .code-one{
+        left:5%;
+        top:24%;
+    }
+
+    .code-two{
+        right:7%;
+        top:17%;
+    }
+
+    .code-three{
+        right:8%;
+        bottom:15%;
+    }
+
+    .dot{
+        left:72%;
+        top:66%;
+    }
 
     section{
         padding:75px 0;
     }
 
-
     .section-head{
         margin-bottom:25px;
     }
-
 
     .section-title{
         font-size:29px;
     }
 
-
     .section-label{
         display:none;
     }
-
 
     .projects{
         grid-template-columns:1fr;
     }
 
-
     .project{
         min-height:220px;
     }
-
 
     .project-name{
         font-size:30px;
     }
 
-
     .service-name{
         font-size:15px;
     }
-
 
     .cta{
         padding:100px 15px;
     }
 
-
     .cta h2{
         font-size:47px;
     }
+}
 
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        scroll-behavior:auto !important;
+        animation:none !important;
+        transition:none !important;
+    }
 }
 
 </style>
@@ -795,8 +955,6 @@ footer{
 
 <body>
 
-
-<!-- HEADER -->
 
 <header>
 
@@ -818,17 +976,46 @@ footer{
 </header>
 
 
-
-<!-- HERO -->
-
 <section class="hero">
+
+    <!-- GRID -->
+
+    <div class="hero-grid"></div>
+
+
+    <!-- BACKGROUND WORD -->
 
     <div class="hero-word">
         VANTA
     </div>
 
-    <div class="orbit"></div>
 
+    <!-- WIREFRAME -->
+
+    <div class="wireframe"></div>
+
+
+    <!-- CODE -->
+
+    <div class="code code-one">
+        &lt;/div&gt;
+    </div>
+
+    <div class="code code-two">
+        { design: true }
+    </div>
+
+    <div class="code code-three">
+        &lt;web /&gt;
+    </div>
+
+
+    <!-- DOT -->
+
+    <div class="dot"></div>
+
+
+    <!-- CONTENT -->
 
     <div class="container hero-content reveal">
 
@@ -836,23 +1023,16 @@ footer{
             WEB DESIGN & DEVELOPMENT
         </div>
 
-
         <h1>
-
             طراحی وب
             <span>متفاوت.</span>
-
         </h1>
 
-
         <p class="hero-description">
-
             طراحی و توسعه وب‌سایت‌های مدرن،
             سریع و اختصاصی برای کسب‌وکارهایی
             که می‌خواهند حرفه‌ای دیده شوند.
-
         </p>
-
 
         <div class="hero-actions">
 
@@ -862,7 +1042,6 @@ footer{
             >
                 مشاهده پروژه‌ها
             </a>
-
 
             <a
                 href="#contact"
@@ -878,13 +1057,9 @@ footer{
 </section>
 
 
-
-<!-- PROJECTS -->
-
 <section id="projects">
 
     <div class="container reveal">
-
 
         <div class="section-head">
 
@@ -901,9 +1076,6 @@ footer{
 
         <div class="projects">
 
-
-            <!-- HAYAT -->
-
             <a
                 href="https://rezawmrd.github.io/hayat-menu/"
                 target="_blank"
@@ -911,13 +1083,10 @@ footer{
             >
 
                 <div>
-
                     <div class="project-number">
                         01
                     </div>
-
                 </div>
-
 
                 <div>
 
@@ -931,7 +1100,6 @@ footer{
 
                 </div>
 
-
                 <div class="project-bottom">
 
                     <div class="project-link">
@@ -947,9 +1115,6 @@ footer{
             </a>
 
 
-
-            <!-- HOBAB -->
-
             <a
                 href="https://rezawmrd.github.io/Hobab_beauty/"
                 target="_blank"
@@ -957,13 +1122,10 @@ footer{
             >
 
                 <div>
-
                     <div class="project-number">
                         02
                     </div>
-
                 </div>
-
 
                 <div>
 
@@ -977,7 +1139,6 @@ footer{
 
                 </div>
 
-
                 <div class="project-bottom">
 
                     <div class="project-link">
@@ -993,9 +1154,6 @@ footer{
             </a>
 
 
-
-            <!-- ESI -->
-
             <a
                 href="https://rezawmrd.github.io/Esi_barber/"
                 target="_blank"
@@ -1003,13 +1161,10 @@ footer{
             >
 
                 <div>
-
                     <div class="project-number">
                         03
                     </div>
-
                 </div>
-
 
                 <div>
 
@@ -1023,7 +1178,6 @@ footer{
 
                 </div>
 
-
                 <div class="project-bottom">
 
                     <div class="project-link">
@@ -1038,7 +1192,6 @@ footer{
 
             </a>
 
-
         </div>
 
     </div>
@@ -1046,13 +1199,9 @@ footer{
 </section>
 
 
-
-<!-- SERVICES -->
-
 <section>
 
     <div class="container reveal">
-
 
         <div class="section-head">
 
@@ -1069,91 +1218,35 @@ footer{
 
         <div class="services">
 
-
             <div class="service">
-
-                <div class="service-number">
-                    01
-                </div>
-
-                <div class="service-name">
-                    طراحی سایت اختصاصی
-                </div>
-
-                <div class="service-arrow">
-                    ↗
-                </div>
-
+                <div class="service-number">01</div>
+                <div class="service-name">طراحی سایت اختصاصی</div>
+                <div class="service-arrow">↗</div>
             </div>
 
-
             <div class="service">
-
-                <div class="service-number">
-                    02
-                </div>
-
-                <div class="service-name">
-                    رزرو و نوبت‌دهی آنلاین
-                </div>
-
-                <div class="service-arrow">
-                    ↗
-                </div>
-
+                <div class="service-number">02</div>
+                <div class="service-name">رزرو و نوبت‌دهی آنلاین</div>
+                <div class="service-arrow">↗</div>
             </div>
 
-
             <div class="service">
-
-                <div class="service-number">
-                    03
-                </div>
-
-                <div class="service-name">
-                    منوی دیجیتال و ثبت سفارش
-                </div>
-
-                <div class="service-arrow">
-                    ↗
-                </div>
-
+                <div class="service-number">03</div>
+                <div class="service-name">منوی دیجیتال و ثبت سفارش</div>
+                <div class="service-arrow">↗</div>
             </div>
 
-
             <div class="service">
-
-                <div class="service-number">
-                    04
-                </div>
-
-                <div class="service-name">
-                    فروشگاه و کاتالوگ آنلاین
-                </div>
-
-                <div class="service-arrow">
-                    ↗
-                </div>
-
+                <div class="service-number">04</div>
+                <div class="service-name">فروشگاه و کاتالوگ آنلاین</div>
+                <div class="service-arrow">↗</div>
             </div>
 
-
             <div class="service">
-
-                <div class="service-number">
-                    05
-                </div>
-
-                <div class="service-name">
-                    پنل مدیریت اختصاصی
-                </div>
-
-                <div class="service-arrow">
-                    ↗
-                </div>
-
+                <div class="service-number">05</div>
+                <div class="service-name">پنل مدیریت اختصاصی</div>
+                <div class="service-arrow">↗</div>
             </div>
-
 
         </div>
 
@@ -1161,9 +1254,6 @@ footer{
 
 </section>
 
-
-
-<!-- CTA -->
 
 <section
     class="cta"
@@ -1173,19 +1263,14 @@ footer{
     <div class="cta-content reveal">
 
         <h2>
-
             ایده‌ای داری؟
             <br>
-
             <span>بسازیمش.</span>
-
         </h2>
-
 
         <p>
             برای شروع یک پروژه جدید با من در ارتباط باش.
         </p>
-
 
         <a
             href="https://instagram.com/rezawmrd"
@@ -1200,16 +1285,42 @@ footer{
 </section>
 
 
-
 <footer>
-
     VANTA — WEB DESIGN & DEVELOPMENT
-
 </footer>
 
 
-
 <script>
+
+/* =========================
+   MOUSE PARALLAX
+========================= */
+
+const root = document.documentElement;
+
+let mouseX = 0;
+let mouseY = 0;
+
+window.addEventListener("mousemove", function(e){
+
+    mouseX =
+        (e.clientX / window.innerWidth - .5) * 40;
+
+    mouseY =
+        (e.clientY / window.innerHeight - .5) * 40;
+
+    root.style.setProperty(
+        "--mx",
+        mouseX + "px"
+    );
+
+    root.style.setProperty(
+        "--my",
+        mouseY + "px"
+    );
+
+});
+
 
 /* =========================
    SCROLL REVEAL
@@ -1217,7 +1328,6 @@ footer{
 
 const reveals =
     document.querySelectorAll(".reveal");
-
 
 const observer =
     new IntersectionObserver(
@@ -1229,6 +1339,10 @@ const observer =
                 if(entry.isIntersecting){
 
                     entry.target.classList.add("show");
+
+                    observer.unobserve(
+                        entry.target
+                    );
 
                 }
 
